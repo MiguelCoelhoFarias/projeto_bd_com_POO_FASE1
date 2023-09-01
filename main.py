@@ -3,10 +3,13 @@ import mysql.connector as mysql
 import csv
 
 
+# obtendo conexão com o banco
 def getConnection():
     conn = mysql.connect(
         host='127.0.0.1', database='percistenciadedados', user='root', password='root123')
     return conn
+
+# inserindo dados com formatação no mySQL
 
 
 def insertCsvToMySQL():
@@ -26,6 +29,8 @@ def insertCsvToMySQL():
         cur.close()
         conn.close()
 
+# def feito para testar a conexão
+
 
 def testarConnection():
     conn = mysql.connect(
@@ -34,5 +39,6 @@ def testarConnection():
     print(conn.get_server_version())
 
 
+# rodando aplicacao
 if __name__ == '__main__':
     insertCsvToMySQL()

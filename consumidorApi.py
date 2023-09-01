@@ -10,9 +10,6 @@ df = bd.read_table(dataset_id='br_anatel_banda_larga_fixa',
 # acessando as tabelas da api
 # usando o id do projeto criado na conta gcloud com meu email institucional
 
-# transformando em dicionario para depois transformar em json:
-
 # Transforma o DataFrame em um arquivo CSV
 df.to_csv('dados.csv', index=False)
-
 print("Dados exportados para dados.csv")
