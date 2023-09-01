@@ -1,9 +1,8 @@
 import basedosdados as bd
-import pandas
+import pandas as pd
 import requests
-import json
-
-
+import psycopg2
+import csv
 # api gratuita que consome dados de usuarios de bandalarga fixa no brasil contendo a média por mês
 df = bd.read_table(dataset_id='br_anatel_banda_larga_fixa',
                    table_id='densidade_brasil',
@@ -12,10 +11,8 @@ df = bd.read_table(dataset_id='br_anatel_banda_larga_fixa',
 # usando o id do projeto criado na conta gcloud com meu email institucional
 
 # transformando em dicionario para depois transformar em json:
-data_dict = df.to_dict(orient='records')
 
-# Escreve os dados em um arquivo JSON
-with open('dados.json', 'w') as json_file:
-    json.dump(data_dict, json_file, indent=4)
-# espaçamento de 4 linhas como padrão de construção json
-print("Dados exportados para dados.json")
+# Transforma o DataFrame em um arquivo CSV
+df.to_csv('dados.csv', index=False)
+
+print("Dados exportados para dados.csv")
